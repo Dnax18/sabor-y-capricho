@@ -1,14 +1,19 @@
 *{box-sizing:border-box;margin:0;padding:0}
 
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+}
+
 body{
   font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
   background:#f2f2f7;color:#1a1a1a;min-height:100vh;
 }
 
 #app{
-  max-width:480px;margin:0 auto;background:#f2f2f7;
+  max-width:480px;width:100%;margin:0 auto;background:#f2f2f7;
   min-height:100vh;display:flex;flex-direction:column;
-  padding-bottom:180px;
+  padding-bottom:180px;overflow-x:hidden;
 }
 
 /* NAV */
@@ -23,13 +28,13 @@ body{
 }
 .nav-btn.active{color:#1a1a1a;border-bottom:2px solid #1a1a1a;font-weight:600;}
 
-#contenido{flex:1;padding:16px 14px;}
+#contenido{flex:1;padding:16px 12px;}
 
 h2{font-size:22px;font-weight:700;margin-bottom:16px;letter-spacing:-0.3px;}
 
 /* GRIDS */
 .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
-.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:16px;}
+.grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;margin-bottom:16px;}
 
 /* MÉTRICAS */
 .metricas-top{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px;}
@@ -59,25 +64,25 @@ h2{font-size:22px;font-weight:700;margin-bottom:16px;letter-spacing:-0.3px;}
    usada en: dashboard, lotes, inventario PT
    ============================================ */
 .prod-card{
-  background:#fff;border-radius:14px;padding:12px;
+  background:#fff;border-radius:14px;padding:10px 8px;
   display:flex;flex-direction:column;gap:3px;
-  transition:opacity .2s;
+  transition:opacity .2s;min-width:0;
 }
 .prod-card.prod-sin-stock{opacity:.4;}
-.prod-card-nombre{font-size:12px;font-weight:600;color:#1a1a1a;line-height:1.3;}
-.prod-card-precio{font-size:17px;font-weight:700;letter-spacing:-0.3px;margin-top:2px;}
-.prod-card-stock{font-size:10px;color:#8e8e93;margin-bottom:4px;}
+.prod-card-nombre{font-size:11px;font-weight:600;color:#1a1a1a;line-height:1.25;overflow-wrap:break-word;}
+.prod-card-precio{font-size:16px;font-weight:700;letter-spacing:-0.3px;margin-top:2px;}
+.prod-card-stock{font-size:9px;color:#8e8e93;margin-bottom:4px;white-space:nowrap;}
 
 /* BOTONES + y − en cards */
 .card-btns{
   display:flex;align-items:center;justify-content:space-between;
-  margin-top:8px;gap:4px;
+  margin-top:6px;gap:2px;
 }
-.card-qty{font-size:15px;font-weight:700;min-width:18px;text-align:center;}
+.card-qty{font-size:13px;font-weight:700;min-width:14px;text-align:center;}
 
 .btn-add{
-  width:32px;height:32px;border-radius:50%;border:none;
-  background:#1a1a1a;color:#fff;font-size:18px;font-weight:300;
+  width:28px;height:28px;border-radius:50%;border:none;
+  background:#1a1a1a;color:#fff;font-size:16px;font-weight:300;
   cursor:pointer;display:flex;align-items:center;justify-content:center;
   align-self:flex-end;transition:transform .1s;flex-shrink:0;
 }
@@ -85,9 +90,9 @@ h2{font-size:22px;font-weight:700;margin-bottom:16px;letter-spacing:-0.3px;}
 .btn-add.btn-add-disabled,.btn-add:disabled{background:#d1d1d6;cursor:not-allowed;}
 
 .btn-card-minus{
-  width:32px;height:32px;border-radius:50%;
+  width:28px;height:28px;border-radius:50%;
   border:1.5px solid #1a1a1a;background:transparent;
-  color:#1a1a1a;font-size:18px;font-weight:300;
+  color:#1a1a1a;font-size:16px;font-weight:300;
   cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;
 }
 .btn-card-disabled{border-color:#d1d1d6!important;color:#d1d1d6!important;cursor:not-allowed;}
@@ -216,4 +221,3 @@ input,select{
 .btn.primario{background:#1a1a1a;color:#fff;}
 .hint{font-size:12px;color:#8e8e93;}
 .texto-vacio{font-size:13px;color:#8e8e93;padding:4px 0;}
-.prod-card-precio.rojo { color: #ff3b30; }
